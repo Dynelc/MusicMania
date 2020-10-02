@@ -1,42 +1,42 @@
 const NoteValue = [
   {
     id: 1,
-    name: 'wholenote',
+    name: 'Wholenote',
     image: require('../assets/images/NoteValue/wholenote.png'),
   },
   {
     id: 2,
-    name: 'halfnote',
+    name: 'Halfnote',
     image: require('../assets/images/NoteValue/halfnote.png'),
   },
   {
     id: 3,
-    name: 'quaternote',
+    name: 'Quaternote',
     image: require('../assets/images/NoteValue/quaternote.png'),
   },
   {
     id: 4,
-    name: 'eightnote',
+    name: 'Eightnote',
     image: require('../assets/images/NoteValue/eightnote.png'),
   },
   {
     id: 5,
-    name: 'sixteennote',
+    name: 'Sixteennote',
     image: require('../assets/images/NoteValue/sixteennote.png'),
   },
   {
     id: 6,
-    name: 'thirtysecondnote',
+    name: 'Thirtysecondnote',
     image: require('../assets/images/NoteValue/thirtysecondnote.png'),
   },
   {
     id: 7,
-    name: 'doublewholenote',
+    name: 'Doublewholenote',
     image: require('../assets/images/NoteValue/doublewholenote.png'),
   },
   {
     id: 8,
-    name: 'quadwholenote',
+    name: 'Quadwholenote',
     image: require('../assets/images/NoteValue/quadwholenote.png'),
   },
 ];
