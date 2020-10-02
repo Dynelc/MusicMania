@@ -16,14 +16,14 @@ const FailedScreen = (props) => {
       <View style={styles.instruction}>
         <Text style={styles.instructiontext}>You Failed The Test.</Text>
       </View>
-      {/* <View style={styles.animationBox}>
+      <View style={styles.animationBox}>
         <LottieView
           source={require('../../assets/animation/failed.json')}
           autoPlay
           loop
           style={styles.animation2}
         />
-      </View> */}
+      </View>
       <View style={styles.buttonBox}>
         <TouchableOpacity
           style={styles.button}

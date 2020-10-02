@@ -17,6 +17,7 @@ const styles = ScaledSheet.create({
   iconFont: {
     fontSize: '20@ms',
     color: 'red',
+    padding: '2@ms',
   },
   scoreContainer: {
     flexDirection: 'row',

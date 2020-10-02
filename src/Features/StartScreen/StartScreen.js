@@ -10,23 +10,21 @@ const StartScreen = (props) => {
       <SafeAreaView backgroundColor={'#92B6D4'} opacity={0.95} />
       <View style={styles.header}>
         <Text style={styles.headerText}>MusicMania</Text>
-        <Text style={styles.subheaderText}>Learn Music Playing Game</Text>
+        <Text style={styles.subheaderText}>Learn Music</Text>
       </View>
-      {/* <View style={styles.animationBox}>
+      <View style={styles.animationBox}>
         <LottieView
           source={require('../../assets/animation/startpage.json')}
           autoPlay
           loop
           style={styles.animation}
         />
-      </View> */}
+      </View>
 
       <View style={styles.instruction}>
-        <Text style={styles.instructiontext}>
-          You will be given a scrambled word.
-        </Text>
-        <Text style={styles.instructiontext}>From scrambled word create</Text>
-        <Text style={styles.instructiontext}>meaningful words.</Text>
+        <Text style={styles.instructiontext}>Play Fun Games And Quizes</Text>
+        <Text style={styles.instructiontext}>To Learn Music</Text>
+        <Text style={styles.instructiontext}></Text>
         <Text style={styles.instructiontext}></Text>
       </View>
 

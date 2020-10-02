@@ -2,7 +2,7 @@ import {ScaledSheet} from 'react-native-size-matters';
 export const styles = ScaledSheet.create({
   mainView: {
     flex: 1,
-    backgroundColor: '#22223b',
+    backgroundColor: '#121212',
   },
   header: {
     alignItems: 'center',
@@ -24,8 +24,8 @@ export const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   animation2: {
-    height: '3000@ms',
-    width: '3000@ms',
+    height: '300@ms',
+    width: '300@ms',
     justifyContent: 'center',
     alignItems: 'center',
   },

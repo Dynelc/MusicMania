@@ -16,22 +16,22 @@ const SuccessScreen = (props) => {
       </View>
       <View style={styles.instruction}>
         <Text style={styles.instructiontext}>
-          You have completed Level {level}.
+          You have completed Test {level}.
         </Text>
       </View>
-      {/* <View style={styles.animationBox}>
+      <View style={styles.animationBox}>
         <LottieView
           source={require('../../assets/animation/success.json')}
           autoPlay
           loop
           style={styles.animation2}
         />
-      </View> */}
+      </View>
       <View style={styles.buttonBox}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate(nextpage)}>
-          <Text style={styles.txt}>Next Level</Text>
+          <Text style={styles.txt}>Next Test</Text>
         </TouchableOpacity>
       </View>
     </View>
