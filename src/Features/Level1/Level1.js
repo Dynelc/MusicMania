@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
 import NoteValue from '../../shared/NoteValue';
-import {cos} from 'react-native-reanimated';
+import {cos, set} from 'react-native-reanimated';
 
-const Level1 = () => {
+const Level1 = (props) => {
+  const {navigation} = props;
   const Items = NoteValue.NoteValue;
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState(0);
   const [displayChoices, setDisplayChoices] = useState();
   const [displayQuestion, setDisplayQuestion] = useState(false);
+  const [score, setScore] = useState(0);
+  const [life, setLife] = useState(3);
+  const myIcon = <Icon name="heartbeat" style={styles.iconFont} />;
+  const [counter, setCounter] = useState(10);
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7];
 
   useEffect(() => {
@@ -23,6 +29,40 @@ const Level1 = () => {
       displayOptions();
     }
   }, [notes]);
+
+  useEffect(() => {
+    if (currentNote > 0) {
+      displayOptions();
+    }
+  }, [currentNote]);
+
+  useEffect(() => {
+    if (life === 0) {
+      failedScreen();
+    }
+  }, [life]);
+
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    if (counter === 0) {
+      checkAnswer();
+    }
+    return () => clearInterval(timer);
+  }, [counter]);
+
+  useEffect(() => {
+    const unsubscribe = props.navigation.addListener('focus', () => {
+      setCurrentNote(0);
+      setScore(0);
+      setCounter(10);
+      noteSelection();
+      setDisplayQuestion(false);
+      setLife(3);
+    });
+
+    return unsubscribe;
+  }, [props.navigation]);
 
   const noteSelection = () => {
     let array = [...Items];
@@ -59,20 +99,41 @@ const Level1 = () => {
       index[j] = index[k];
       index[k] = temp;
     }
-    console.log(index);
     let options = [];
     for (let i = 0; i < index.length; i++) {
       let j = index[i];
       options.push(notes[j].name);
-      console.log(j);
     }
-    console.log(options);
     setDisplayChoices(options);
   };
 
+  const checkAnswer = (id) => {
+    console.log(id);
+    console.log(displayChoices[id]);
+    console.log(notes[currentNote].name);
+    if (displayChoices[id] === notes[currentNote].name) {
+      setScore(score + 1);
+    } else setLife(life - 1);
+    if (currentNote === 7) {
+      return navigation.navigate('SuccessScreen', {level: 1});
+    }
+    setCurrentNote(currentNote + 1);
+    setCounter(10);
+  };
+
+  const failedScreen = () => {
+    return navigation.navigate('FailedScreen', {level: 1});
+  };
+
+  const iconLoop = () => {
+    let array = [];
+    for (let i = 0; i < life; i++) {
+      array.push(<View key={i}>{myIcon}</View>);
+    }
+    return array;
+  };
+
   const renderQuestion = () => {
-    console.log(notes);
-    console.log(displayChoices);
     return (
       <View style={{flex: 1}}>
         <View style={styles.instructionContainer}>
@@ -87,20 +148,33 @@ const Level1 = () => {
               source={notes[currentNote].image}></Image>
           </View>
         </View>
+        <View style={styles.questionOptionsContainer}>
+          <Text style={styles.questionText}>
+            Guess the above shown note value.
+          </Text>
+        </View>
         <View style={styles.choicesBox}>
-          <TouchableOpacity>
-            <Text>{displayChoices[0]}</Text>
+          <TouchableOpacity
+            style={styles.individualChoice}
+            onPress={() => checkAnswer((id = 0))}>
+            <Text style={styles.questionText}>{displayChoices[0]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>{displayChoices[1]}</Text>
+          <TouchableOpacity
+            style={styles.individualChoice}
+            onPress={() => checkAnswer((id = 1))}>
+            <Text style={styles.questionText}>{displayChoices[1]}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.choicesBox}>
-          <TouchableOpacity>
-            <Text>{displayChoices[2]}</Text>
+          <TouchableOpacity
+            style={styles.individualChoice}
+            onPress={() => checkAnswer((id = 2))}>
+            <Text style={styles.questionText}>{displayChoices[2]}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>{displayChoices[3]}</Text>
+          <TouchableOpacity
+            style={styles.individualChoice}
+            onPress={() => checkAnswer((id = 3))}>
+            <Text style={styles.questionText}>{displayChoices[3]}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -109,8 +183,24 @@ const Level1 = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.scoreContainer}>
+        <View style={styles.scoreBox}>
+          <Text style={styles.scoreText}>{score} Points</Text>
+        </View>
+        <View>
+          <Text style={styles.scoreText}>{counter}</Text>
+        </View>
+        <View style={styles.scoreBox}>
+          <Text>{iconLoop()}</Text>
+        </View>
+      </View>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>MusicMania</Text>
+        <Text style={{color: 'white'}}>Learn Music</Text>
+      </View>
+      <View style={styles.problemContainer}>
+        <Text style={styles.problemText}> Problems</Text>
+        <Text style={styles.problemText}>{currentNote} | 7</Text>
       </View>
       {displayQuestion ? renderQuestion() : null}
     </View>

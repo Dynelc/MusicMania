@@ -36,7 +36,7 @@ const NoteValue = [
   },
   {
     id: 8,
-    name: ' quadwholenote',
+    name: 'quadwholenote',
     image: require('../assets/images/NoteValue/quadwholenote.png'),
   },
 ];
