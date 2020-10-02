@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Clefs from '../../shared/Clefs';
@@ -134,7 +134,7 @@ const Level3 = (props) => {
 
   const renderQuestion = () => {
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, justifyContent: 'center'}}>
         <View style={styles.instructionContainer}>
           <Text style={styles.instructionText}>
             Get familiar with clefs in music.
@@ -180,6 +180,7 @@ const Level3 = (props) => {
 
   return (
     <View style={styles.container}>
+      <SafeAreaView backgroundColor={'#92B6D4'} opacity={0.95} />
       <View style={styles.scoreContainer}>
         <View style={styles.scoreBox}>
           <Text style={styles.scoreText}>{score} Points</Text>

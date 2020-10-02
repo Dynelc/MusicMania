@@ -4,6 +4,7 @@ const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#121212',
+    justifyContent: 'center',
   },
   headerContainer: {
     justifyContent: 'center',
@@ -23,7 +24,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginTop: '10@ms',
+    marginTop: '50@ms',
   },
   scoreBox: {
     height: '35@ms',

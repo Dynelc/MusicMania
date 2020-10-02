@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './styles';
@@ -135,7 +135,7 @@ const Level1 = (props) => {
 
   const renderQuestion = () => {
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, justifyContent: 'center'}}>
         <View style={styles.instructionContainer}>
           <Text style={styles.instructionText}>
             Get familiar with note value in music.
@@ -183,6 +183,7 @@ const Level1 = (props) => {
 
   return (
     <View style={styles.container}>
+      <SafeAreaView backgroundColor={'#92B6D4'} opacity={0.95} />
       <View style={styles.scoreContainer}>
         <View style={styles.scoreBox}>
           <Text style={styles.scoreText}>{score} Points</Text>
