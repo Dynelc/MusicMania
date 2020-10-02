@@ -90,7 +90,7 @@ const styles = ScaledSheet.create({
   },
   individualChoice: {
     height: '40@ms',
-    width: '40%',
+    width: '43%',
     borderWidth: '1@ms',
     borderColor: 'white',
     justifyContent: 'center',
